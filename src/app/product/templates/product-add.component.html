@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <form [formGroup]="productForm" (ngSubmit)="handleSubmit()" autocomplete="off">
+          <h3>Thêm Tour</h3>
+          <div class="form-group">
+            <label for="name">Tên Tour</label>
+            <input formControlName="name" type="text" class="form-control" name="name" />
+            <p *ngIf="!productForm.controls['name']?.valid && (productForm.controls['name']?.dirty
+                ||productForm.controls['name']?.touched) && productForm.controls['name']?.errors?.['required']"
+              class="help-block text-danger">
+              Không Được Để Trống
+            </p>
+            <p *ngIf="!productForm.controls['name']?.valid && (productForm.controls['name']?.dirty
+                ||productForm.controls['name']?.touched) && productForm.controls['name']?.errors?.['minlength']"
+              class="help-block text-danger">
+              Tên Tour Tối Thiểu 5 Kí Tự
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="price">Giá</label>
+            <input formControlName="price" type="text" class="form-control" />
+            <p *ngIf="!productForm.controls['price']?.valid && (productForm.controls['price']?.dirty
+                ||productForm.controls['price']?.touched) && productForm.controls['price']?.errors?.['required']"
+              class="help-block text-danger">
+              Không Được Để Trống
+            </p>
+            <p *ngIf="!productForm.controls['price']?.valid && (productForm.controls['price']?.dirty
+                ||productForm.controls['price']?.touched) && productForm.controls['price']?.errors?.['minlength']"
+              class="help-block text-danger">
+                Giá Tour Tối Thiểu 5 Kí Tự
+            </p>
+            <p *ngIf="!productForm.controls['price']?.valid && (productForm.controls['price']?.dirty
+                    ||productForm.controls['price']?.touched) && productForm.controls['price']?.errors?.['pattern']"
+                  class="help-block text-danger">
+                Chỉ Nhập Số
+            </p>
+          </div>
+          <div class="form-group">
+            <label for="description">Mô Tả</label>
+            <textarea formControlName="description" type="text" class="form-control" ></textarea>
+            <p *ngIf="!productForm.controls['description']?.valid && (productForm.controls['description']?.dirty
+                ||productForm.controls['description']?.touched) && productForm.controls['description']?.errors?.['required']"
+              class="help-block text-danger">
+              Không Được Để Trống
+            </p>
+          </div>
+          <br>
+          <div class="form-group">
+            <button [disabled]="!productForm.valid" type="submit" class="btn btn-primary">
+              Submit
+            </button>
+            &nbsp;
+            <a [routerLink]="['/product']" class="btn btn-danger">Hủy</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
